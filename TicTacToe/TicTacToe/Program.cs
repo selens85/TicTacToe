@@ -13,6 +13,6 @@
 
 using TicTacToe;
 
-GameBoard.
+GameBoard.B
 
-//Test2
+Console.WriteLine("neiet");
