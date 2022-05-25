@@ -10,7 +10,7 @@
 //3.2.	 If no winner keep playing by going to step 1.
 //3.3.	 If all markers are placed and no winner then it’s a draw stop the game
 //3.4.	 If we have a winner announce who won and stop the game
-// Sis ir lai pārbaudītu kā darbojas.
+Console.WriteLine("ietatkal");
 
 
 
