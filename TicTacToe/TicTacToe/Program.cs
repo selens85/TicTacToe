@@ -16,3 +16,4 @@ using TicTacToe;
 GameBoard.B
 
 Console.WriteLine("neiet");
+Console.WriteLine("iet");
