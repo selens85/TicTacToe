@@ -19,3 +19,4 @@ using TicTacToe;
 
 
 Console.WriteLine("neiet");
+Console.WriteLine("iet");
