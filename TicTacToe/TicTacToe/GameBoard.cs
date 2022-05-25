@@ -8,7 +8,7 @@ namespace TicTacToe
 {
     public class GameBoard
     {
-        static void Board()
+        public static void DrawBoard()
         {
             Console.WriteLine("     |     |      ");
             Console.WriteLine("     |     |      ");
