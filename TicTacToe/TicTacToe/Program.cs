@@ -10,8 +10,57 @@
 //3.2.	 If no winner keep playing by going to step 1.
 //3.3.	 If all markers are placed and no winner then it’s a draw stop the game
 //3.4.	 If we have a winner announce who won and stop the game
+using System;
+using System.Threading;
 
-using TicTacToe;
 
-GameBoard.DrawBoard();
+
+
+namespace TicTacToe
+{
+    public static class Program
+    {
+        public static char[] boardValues = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("This is Tic Tac Toe game.");
+            Console.WriteLine("If you don't know the rules you play Desas");
+            Console.WriteLine("Player one choses char X");
+            Console.WriteLine("Player two choses char O");
+            Console.WriteLine("\n");
+
+            DrawBoard();
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("Player's one turn: ");
+
+
+        }
+
+
+
+
+
+            public  static void DrawBoard()
+        {
+            Console.WriteLine("     |     |      ");
+            Console.WriteLine("  {0}  |  {1}  |  {2}", boardValues[0], boardValues[1], boardValues[2]);
+            Console.WriteLine("_____|_____|_____ ");
+            Console.WriteLine("     |     |      ");
+            Console.WriteLine("  {0}  |  {1}  |  {2}", boardValues[3], boardValues[4], boardValues[5]);
+            Console.WriteLine("_____|_____|_____ ");
+            Console.WriteLine("     |     |      ");
+            Console.WriteLine("  {0}  |  {1}  |  {2}", boardValues[6], boardValues[7], boardValues[8]);
+            Console.WriteLine("     |     |      ");
+        }
+
+
+
+    }
+}
+
+
+
 
