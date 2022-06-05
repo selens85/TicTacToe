@@ -24,22 +24,43 @@ namespace TicTacToe
 
         public static void Main(string[] args)
         {
+            int choice = 0;
+
             Console.WriteLine("This is Tic Tac Toe game.");
             Console.WriteLine("If you don't know the rules you play Desas");
             Console.WriteLine("Player one choses char X");
             Console.WriteLine("Player two choses char O");
+            Console.WriteLine("Player needs to enter number from 1 to 9 according to Board layout");
             Console.WriteLine("\n");
+            Console.WriteLine("To begin the game press any key");
+            Console.ReadKey();
 
+            Console.Clear();
             DrawBoard();
-
             Console.WriteLine("\n");
 
-            Console.WriteLine("Player's one turn: ");
-
+            for (var i = 1; i <= 9; i++)
+            {
+                var counter = i;
+                if (counter % 2 != 0)
+                {
+                    Console.WriteLine("Player one goes: ");
+                    choice = int.Parse(Console.ReadLine());
+                    boardValues[choice - 1] = 'X';
+                }
+                else
+                {
+                    Console.WriteLine("Player two goes: ");
+                    choice = int.Parse(Console.ReadLine());
+                    boardValues[choice - 1] = 'O';
+                }
+                Console.Clear();
+                DrawBoard();
+                Console.WriteLine("\n");
+            }
+            Console.ReadLine(); 
 
         }
-
-
 
 
 
@@ -54,9 +75,8 @@ namespace TicTacToe
             Console.WriteLine("     |     |      ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", boardValues[6], boardValues[7], boardValues[8]);
             Console.WriteLine("     |     |      ");
+
         }
-
-
 
     }
 }
