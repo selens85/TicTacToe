@@ -40,9 +40,8 @@ namespace TicTacToe
             Console.WriteLine("\n");
 
             for (var i = 1; i <= 9; i++)
-            {
-                var counter = i;
-                if (counter % 2 != 0)
+            {                
+                if (i % 2 != 0)
                 {
                     Console.WriteLine("Player one goes: ");
                     choice = int.Parse(Console.ReadLine());
@@ -56,6 +55,26 @@ namespace TicTacToe
                 }
                 Console.Clear();
                 DrawBoard();
+                if (CheckWinner())
+                {
+                    Console.WriteLine("\n");
+                    Console.WriteLine("We have a winner!!!");
+                    if (i % 2 == 0)
+                    {
+                        Console.WriteLine("And it is Player Two");
+                    }
+                    else
+                    {
+                        Console.WriteLine("And it is Player One");
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("\n");
+                    Console.WriteLine("We have a draw!!!");                  
+                }
+
                 Console.WriteLine("\n");
             }
             Console.ReadLine(); 
@@ -63,8 +82,7 @@ namespace TicTacToe
         }
 
 
-
-            public  static void DrawBoard()
+        public  static void DrawBoard()
         {
             Console.WriteLine("     |     |      ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", boardValues[0], boardValues[1], boardValues[2]);
@@ -76,6 +94,47 @@ namespace TicTacToe
             Console.WriteLine("  {0}  |  {1}  |  {2}", boardValues[6], boardValues[7], boardValues[8]);
             Console.WriteLine("     |     |      ");
 
+        }
+
+
+       public static bool CheckWinner()
+        {
+            if (boardValues[0] == boardValues[1] && boardValues[0] == boardValues[2]) // horizontal
+            {
+                return true;
+            }
+            else if (boardValues[3] == boardValues[4] && boardValues[3] == boardValues[5])
+            {
+                return true;
+            }
+            else if (boardValues[6] == boardValues[7] && boardValues[6] == boardValues[8]) 
+            {
+                return true;
+            }
+            else if (boardValues[0] == boardValues[3] && boardValues[0] == boardValues[6]) // vertical
+            {
+                return true;
+            }
+            else if (boardValues[1] == boardValues[4] && boardValues[1] == boardValues[7])
+            {
+                return true;
+            }
+            else if (boardValues[2] == boardValues[5] && boardValues[2] == boardValues[8]) 
+            {
+                return true;
+            }
+            else if (boardValues[0] == boardValues[4] && boardValues[0] == boardValues[8]) // diagonal
+            {
+                return true;
+            }
+            else if (boardValues[2] == boardValues[4] && boardValues[2] == boardValues[6]) 
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
