@@ -31,6 +31,7 @@ namespace TicTacToe
 
                 var result = CheckWinner();
 
+                               
                 if (result == 'X')
                 {
                     Console.WriteLine("Player One is a winner!");
@@ -39,7 +40,7 @@ namespace TicTacToe
                 {
                     Console.WriteLine("Player Two is a winner!");
                 }
-                else if (result == 'D')
+                else 
                 {
                     Console.WriteLine("Its a draw!");
                 }
@@ -57,10 +58,9 @@ namespace TicTacToe
                 Console.WriteLine("Player two (O) goes: ");
             }
 
-            if (choice == 0)
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
+           
+            choice = int.Parse(Console.ReadLine());
+            
 
             if (BoardValues[choice - 1] == 'X' || BoardValues[choice - 1] == 'O')
             {
@@ -131,7 +131,7 @@ namespace TicTacToe
             Console.WriteLine($"  {BoardValues[3]}  |  {BoardValues[4]}  |  {BoardValues[5]}");
             Console.WriteLine("_____|_____|_____ ");
             Console.WriteLine("     |     |      ");
-            Console.WriteLine($"  {BoardValues[6]}  |  {BoardValues[7]}  |  {BoardValues[7]}");
+            Console.WriteLine($"  {BoardValues[6]}  |  {BoardValues[7]}  |  {BoardValues[8]}");
             Console.WriteLine("     |     |      ");
 
         }
