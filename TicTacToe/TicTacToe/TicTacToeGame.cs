@@ -54,7 +54,7 @@ namespace TicTacToe
             }
             else
             {
-                Console.WriteLine("Player two (0) goes: ");
+                Console.WriteLine("Player two (O) goes: ");
             }
 
             if (choice == 0)
