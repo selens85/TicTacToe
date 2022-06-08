@@ -125,13 +125,13 @@ namespace TicTacToe
         {
             Console.Clear();
             Console.WriteLine("     |     |      ");
-            Console.WriteLine("  {0}  |  {1}  |  {2}", BoardValues[0], BoardValues[1], BoardValues[2]);
+            Console.WriteLine($"  {BoardValues[0]}  |  {BoardValues[1]}  |  {BoardValues[2]}");
             Console.WriteLine("_____|_____|_____ ");
             Console.WriteLine("     |     |      ");
-            Console.WriteLine("  {0}  |  {1}  |  {2}", BoardValues[3], BoardValues[4], BoardValues[5]);
+            Console.WriteLine($"  {BoardValues[3]}  |  {BoardValues[4]}  |  {BoardValues[5]}");
             Console.WriteLine("_____|_____|_____ ");
             Console.WriteLine("     |     |      ");
-            Console.WriteLine("  {0}  |  {1}  |  {2}", BoardValues[6], BoardValues[7], BoardValues[8]);
+            Console.WriteLine($"  {BoardValues[6]}  |  {BoardValues[7]}  |  {BoardValues[7]}");
             Console.WriteLine("     |     |      ");
 
         }
