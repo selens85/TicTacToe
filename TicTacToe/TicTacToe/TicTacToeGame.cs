@@ -50,11 +50,11 @@ namespace TicTacToe
         {
             if (i % 2 != 0)
             {
-                Console.WriteLine("Player one goes: ");
+                Console.WriteLine("Player one (X) goes: ");
             }
             else
             {
-                Console.WriteLine("Player two goes: ");
+                Console.WriteLine("Player two (0) goes: ");
             }
 
             if (choice == 0)
