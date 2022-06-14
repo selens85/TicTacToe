@@ -4,8 +4,15 @@ namespace TicTacToe
 {
     public class TicTacToeGame
     {
+        public const Players player1 = Players.Player1;
+        public const Players player2 = Players.Player2;
+
+        public char playerX = (char)player1;
+        public char playerO = (char)player2;
+
         public char[] BoardValues = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-       
+
+               
         public TicTacToeGame()
         {
         }
@@ -31,16 +38,20 @@ namespace TicTacToe
 
                 var result = CheckWinner();
 
-                               
+
+               // if (result != 'X' && result != 'O')
+                //{
+                 //   Console.WriteLine(" ");
+                //}
                 if (result == 'X')
                 {
-                    Console.WriteLine("Player One is a winner!");
+                    Console.WriteLine($"Player One ({playerX}) is a winner!");
                 }
                 else if (result == 'O')
                 {
-                    Console.WriteLine("Player Two is a winner!");
+                    Console.WriteLine($"Player Two ({playerO}) is a winner!");
                 }
-                else 
+                else if (result == 'D')
                 {
                     Console.WriteLine("Its a draw!");
                 }
@@ -51,11 +62,11 @@ namespace TicTacToe
         {
             if (i % 2 != 0)
             {
-                Console.WriteLine("Player one (X) goes: ");
+                Console.WriteLine($"Player One ({playerX}) goes: ");
             }
             else
             {
-                Console.WriteLine("Player two (O) goes: ");
+                Console.WriteLine($"Player Two ({playerO}) goes: ");
             }
 
            
@@ -113,8 +124,8 @@ namespace TicTacToe
         {
             Console.WriteLine("This is Tic Tac Toe game.");
             Console.WriteLine("If you don't know the rules you play Desas");
-            Console.WriteLine("Player one choses char X");
-            Console.WriteLine("Player two choses char O");
+            Console.WriteLine($"Player one choses char {playerX}");
+            Console.WriteLine($"Player two choses char {playerO}");
             Console.WriteLine("Player needs to enter number from 1 to 9 according to the Board layout");
             Console.Write("\n");
             Console.WriteLine("To begin the game press any key");
