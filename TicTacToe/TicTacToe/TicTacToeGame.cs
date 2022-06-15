@@ -10,6 +10,9 @@ namespace TicTacToe
         public char playerX = (char)player1;
         public char playerO = (char)player2;
 
+        PlayerHuman PlayerOneName = new PlayerHuman();
+        PlayerHuman PlayerTwoName = new PlayerHuman();
+
         public char[] BoardValues = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
                
@@ -39,19 +42,35 @@ namespace TicTacToe
                 var result = CheckWinner();
 
 
-               // if (result != 'X' && result != 'O')
-                //{
-                 //   Console.WriteLine(" ");
-                //}
+             
                 if (result == 'X')
                 {
-                    Console.WriteLine($"Player One ({playerX}) is a winner!");
+                    if (PlayerOneName.Age > PlayerTwoName.Age)
+                    {
+                        Console.WriteLine($"Player {PlayerOneName.Name} ({playerX}) is a winner!");
+                        PlayerOneName.Haleluja();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Player {PlayerOneName.Name} ({playerX}) is a winner!");
+                    }
+                    
+                    break;
                 }
                 else if (result == 'O')
                 {
-                    Console.WriteLine($"Player Two ({playerO}) is a winner!");
+                    if (PlayerOneName.Age < PlayerTwoName.Age)
+                    {
+                        Console.WriteLine($"Player {PlayerTwoName.Name} ({playerO}) is a winner!");
+                        PlayerTwoName.Haleluja();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Player {PlayerTwoName.Name} ({playerO}) is a winner!");
+                    }
+                    break;
                 }
-                else if (result == 'D')
+                else if (result == 'D' && i == 9)
                 {
                     Console.WriteLine("Its a draw!");
                 }
@@ -62,11 +81,11 @@ namespace TicTacToe
         {
             if (i % 2 != 0)
             {
-                Console.WriteLine($"Player One ({playerX}) goes: ");
+                Console.WriteLine($"Player {PlayerOneName.Name} ({playerX}) goes: ");
             }
             else
             {
-                Console.WriteLine($"Player Two ({playerO}) goes: ");
+                Console.WriteLine($"Player {PlayerTwoName.Name} ({playerO}) goes: ");
             }
 
            
@@ -122,10 +141,19 @@ namespace TicTacToe
 
         public void PrintRules()
         {
+            
             Console.WriteLine("This is Tic Tac Toe game.");
             Console.WriteLine("If you don't know the rules you play Desas");
-            Console.WriteLine($"Player one choses char {playerX}");
-            Console.WriteLine($"Player two choses char {playerO}");
+            Console.WriteLine("What's the name of player one:");
+            PlayerOneName.Name = Console.ReadLine();
+            Console.WriteLine("what's the age of player one:");
+            PlayerOneName.Age = int.Parse(Console.ReadLine());
+            Console.WriteLine("What's the name of player two:");
+            PlayerTwoName.Name = Console.ReadLine();
+            Console.WriteLine("what's the age of player two:");
+            PlayerTwoName.Age = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Player {PlayerOneName.Name} choses char {playerX}");
+            Console.WriteLine($"Player {PlayerTwoName.Name} choses char {playerO}");
             Console.WriteLine("Player needs to enter number from 1 to 9 according to the Board layout");
             Console.Write("\n");
             Console.WriteLine("To begin the game press any key");
