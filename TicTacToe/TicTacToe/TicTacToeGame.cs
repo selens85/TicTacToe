@@ -12,6 +12,9 @@ namespace TicTacToe
 
         PlayerHuman PlayerOneName = new PlayerHuman();
         PlayerHuman PlayerTwoName = new PlayerHuman();
+        PrintDrawBoard PrintDrawBoard = new PrintDrawBoard();
+        CheckWinner CheckWinner = new CheckWinner();
+        PrintRules PrintRules = new PrintRules();
 
         public char[] BoardValues = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
@@ -27,8 +30,8 @@ namespace TicTacToe
 
         public void StartGame()
         {
-            PrintRules();
-            DrawBoard();
+            PrintRules.Rules(PlayerOneName, PlayerTwoName, playerX, playerO);
+            PrintDrawBoard.DrawBoard(BoardValues);
 
             for (var i = 1; i <= 9; i++)
             {
@@ -37,9 +40,9 @@ namespace TicTacToe
                     Console.WriteLine("Wrong choice, try again");
                 }
 
-                DrawBoard();
+                PrintDrawBoard.DrawBoard(BoardValues);
 
-                var result = CheckWinner();
+                var result = CheckWinner.Winner(BoardValues);
 
 
              
@@ -109,70 +112,6 @@ namespace TicTacToe
             return true;
         }
 
-        public char CheckWinner()
-        {
-            if (BoardValues[0] == 'X' && BoardValues[1] == 'X' && BoardValues[2] == 'X' ||
-                BoardValues[3] == 'X' && BoardValues[4] == 'X' && BoardValues[5] == 'X' ||
-                BoardValues[6] == 'X' && BoardValues[7] == 'X' && BoardValues[8] == 'X' ||
-                BoardValues[0] == 'X' && BoardValues[3] == 'X' && BoardValues[6] == 'X' ||
-                BoardValues[1] == 'X' && BoardValues[4] == 'X' && BoardValues[7] == 'X' ||
-                BoardValues[2] == 'X' && BoardValues[5] == 'X' && BoardValues[8] == 'X' ||
-                BoardValues[0] == 'X' && BoardValues[4] == 'X' && BoardValues[8] == 'X' ||
-                BoardValues[2] == 'X' && BoardValues[4] == 'X' && BoardValues[6] == 'X')
-            {
-                return 'X';
-            }
-            else if (BoardValues[0] == 'O' && BoardValues[1] == 'O' && BoardValues[2] == 'O' ||
-                BoardValues[3] == 'O' && BoardValues[4] == 'O' && BoardValues[5] == 'O' ||
-                BoardValues[6] == 'O' && BoardValues[7] == 'O' && BoardValues[8] == 'O' ||
-                BoardValues[0] == 'O' && BoardValues[3] == 'O' && BoardValues[6] == 'O' ||
-                BoardValues[1] == 'O' && BoardValues[4] == 'O' && BoardValues[7] == 'O' ||
-                BoardValues[2] == 'O' && BoardValues[5] == 'O' && BoardValues[8] == 'O' ||
-                BoardValues[0] == 'O' && BoardValues[4] == 'O' && BoardValues[8] == 'O' ||
-                BoardValues[2] == 'O' && BoardValues[4] == 'O' && BoardValues[6] == 'O')
-            {
-                return 'O';
-            }
-            else
-            {
-                return 'D';
-            }
-        }
-
-        public void PrintRules()
-        {
-            
-            Console.WriteLine("This is Tic Tac Toe game.");
-            Console.WriteLine("If you don't know the rules you play Desas");
-            Console.WriteLine("What's the name of player one:");
-            PlayerOneName.Name = Console.ReadLine();
-            Console.WriteLine("what's the age of player one:");
-            PlayerOneName.Age = int.Parse(Console.ReadLine());
-            Console.WriteLine("What's the name of player two:");
-            PlayerTwoName.Name = Console.ReadLine();
-            Console.WriteLine("what's the age of player two:");
-            PlayerTwoName.Age = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Player {PlayerOneName.Name} choses char {playerX}");
-            Console.WriteLine($"Player {PlayerTwoName.Name} choses char {playerO}");
-            Console.WriteLine("Player needs to enter number from 1 to 9 according to the Board layout");
-            Console.Write("\n");
-            Console.WriteLine("To begin the game press any key");
-            Console.ReadKey();
-        }
-
-        public void DrawBoard()
-        {
-            Console.Clear();
-            Console.WriteLine("     |     |      ");
-            Console.WriteLine($"  {BoardValues[0]}  |  {BoardValues[1]}  |  {BoardValues[2]}");
-            Console.WriteLine("_____|_____|_____ ");
-            Console.WriteLine("     |     |      ");
-            Console.WriteLine($"  {BoardValues[3]}  |  {BoardValues[4]}  |  {BoardValues[5]}");
-            Console.WriteLine("_____|_____|_____ ");
-            Console.WriteLine("     |     |      ");
-            Console.WriteLine($"  {BoardValues[6]}  |  {BoardValues[7]}  |  {BoardValues[8]}");
-            Console.WriteLine("     |     |      ");
-
-        }
+       
     }
 }
