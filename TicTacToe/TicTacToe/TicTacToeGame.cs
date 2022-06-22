@@ -18,7 +18,7 @@ namespace TicTacToe
 
         public char[] BoardValues = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-               
+
         public TicTacToeGame()
         {
         }
@@ -35,9 +35,10 @@ namespace TicTacToe
 
             for (var i = 1; i <= 9; i++)
             {
-                while (!InputChoice(i))
+                bool inputIsValid = false;
+                while (!inputIsValid)
                 {
-                    Console.WriteLine("Wrong choice, try again");
+                    inputIsValid = InputChoice(i);
                 }
 
                 PrintDrawBoard.DrawBoard(BoardValues);
@@ -45,7 +46,7 @@ namespace TicTacToe
                 var result = CheckWinner.Winner(BoardValues);
 
 
-             
+
                 if (result == 'X')
                 {
                     if (PlayerOneName.Age > PlayerTwoName.Age)
@@ -57,7 +58,7 @@ namespace TicTacToe
                     {
                         Console.WriteLine($"Player {PlayerOneName.Name} ({playerX}) is a winner!");
                     }
-                    
+
                     break;
                 }
                 else if (result == 'O')
@@ -91,12 +92,31 @@ namespace TicTacToe
                 Console.WriteLine($"Player {PlayerTwoName.Name} ({playerO}) goes: ");
             }
 
-           
-            choice = int.Parse(Console.ReadLine());
-            
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+
+                Validate(choice);
+              
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Enter number");
+                return false;
+            }
+            catch (BiggerthanNine biggerthanNine)
+            {
+                Console.WriteLine($"{biggerthanNine.Message}");
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Global error {e.Message}");
+            }
 
             if (BoardValues[choice - 1] == 'X' || BoardValues[choice - 1] == 'O')
             {
+                Console.WriteLine("Field is taken try again");
                 return false;
             }
 
@@ -111,6 +131,16 @@ namespace TicTacToe
 
             return true;
         }
+        
+        public void Validate(int choice)
+        {
+            if (choice < 1 || choice > 9)
+            {
+                throw new BiggerthanNine("Number should be between 1 and 9, try again");
+            }
+           
+        }
+
 
        
     }
