@@ -97,7 +97,7 @@ namespace TicTacToe
                 choice = int.Parse(Console.ReadLine());
 
                 Validate(choice);
-              
+
             }
             catch (FormatException)
             {
@@ -109,17 +109,17 @@ namespace TicTacToe
                 Console.WriteLine($"{biggerthanNine.Message}");
                 return false;
             }
+            catch (FieldTaken fieldtaken)
+            {
+                Console.WriteLine($"{fieldtaken.Message}");
+                return false;
+            }
             catch (Exception e)
             {
                 Console.WriteLine($"Global error {e.Message}");
             }
 
-            if (BoardValues[choice - 1] == 'X' || BoardValues[choice - 1] == 'O')
-            {
-                Console.WriteLine("Field is taken try again");
-                return false;
-            }
-
+           
             if (i % 2 != 0)
             {
                 BoardValues[choice - 1] = 'X';
@@ -138,7 +138,12 @@ namespace TicTacToe
             {
                 throw new BiggerthanNine("Number should be between 1 and 9, try again");
             }
-           
+            if (BoardValues[choice - 1] == 'X' || BoardValues[choice - 1] == 'O')
+            {
+                throw new FieldTaken("Field is taken try again");
+                
+            }
+
         }
 
 
